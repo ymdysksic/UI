@@ -11,10 +11,10 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Lesson4 Chap.3.3
         button1.setOnClickListener {
-            Log.d("UI_PARTS", "ボタンをタップしました")
+            // EditTextの文字列をTextViewに設定
+            textView.text = editText.text.toString()
         }
-
-        textView.text = "テキスト"
     }
 }
