@@ -14,5 +14,7 @@ class MainActivity : AppCompatActivity(){
         button1.setOnClickListener {
             Log.d("UI_PARTS", "ボタンをタップしました")
         }
+
+        textView.text = "テキスト"
     }
 }
