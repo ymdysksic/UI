@@ -1,5 +1,6 @@
 package jp.techacademy.yusuke.ui
 
+import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log  // ← ここを追加
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         button1.setOnClickListener(this)
         button2.setOnClickListener(this)
+        button3.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -22,6 +24,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             textView.text = editText.text.toString()
         } else if (v.id == R.id.button2) {
             showAlertDialog()
+        } else if (v.id == R.id.button3) {
+            showTimePickerDialog()
         }
     }
 
@@ -50,5 +54,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // AlertDialogを作成して表示する
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
+    }
+
+    private fun showTimePickerDialog() {
+        val timePickerDialog = TimePickerDialog(
+            this,
+            TimePickerDialog.OnTimeSetListener { view, hour, minute ->
+                Log.d("UI_PARTS", "$hour:$minute")
+            },
+            13, 0, true)
+        timePickerDialog.show()
     }
 }
