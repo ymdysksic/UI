@@ -1,5 +1,6 @@
 package jp.techacademy.yusuke.ui
 
+import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,15 +18,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         button1.setOnClickListener(this)
         button2.setOnClickListener(this)
         button3.setOnClickListener(this)
+        button4.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
-        if (v.id == R.id.button1) {
-            textView.text = editText.text.toString()
-        } else if (v.id == R.id.button2) {
-            showAlertDialog()
-        } else if (v.id == R.id.button3) {
-            showTimePickerDialog()
+        when(v.id){
+            R.id.button1 -> textView.text = editText.text.toString()
+            R.id.button2 -> showAlertDialog()
+            R.id.button3 -> showTimePickerDialog()
+            R.id.button4 -> showDatePickerDialog()
         }
     }
 
@@ -64,5 +65,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             },
             13, 0, true)
         timePickerDialog.show()
+    }
+
+    // Lesson4 Chap.3.6
+    private fun showDatePickerDialog() {
+        val datePickerDialog = DatePickerDialog(
+            this,
+            DatePickerDialog.OnDateSetListener() {view, year, month, dayOfMonth->
+                Log.d("UI_PARTS", "$year/${month+1}/$dayOfMonth")
+            },
+            2018,
+            4,
+            1)
+        datePickerDialog.show()
     }
 }
